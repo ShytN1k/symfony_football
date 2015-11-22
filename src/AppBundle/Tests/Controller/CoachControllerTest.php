@@ -4,16 +4,14 @@ namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class DefaultControllerTest extends WebTestCase
+class CoachControllerTest extends WebTestCase
 {
     public function testIndex()
     {
         $client = static::createClient();
-
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/Ukraine/coach2');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertContains('National Football Team', $crawler->filter('ul li')->text());
-        $this->assertCount(24, $crawler->filter('ul li'));
+        $this->assertContains('Information about coach 2.', $crawler->filter('')->text());
     }
 }
