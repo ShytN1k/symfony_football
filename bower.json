@@ -1,0 +1,21 @@
+{
+  "name": "symfony.football.local",
+  "description": "What's inside? --------------",
+  "main": "index.js",
+  "authors": [
+    "Denis Beliakov <denis.beliakov14@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/ShytN1k/symfony_football",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6"
+  }
+}
