@@ -10,6 +10,23 @@ class Coach
     private $expirience;
     private $age;
     private $nationality;
+    private $summary;
+
+    /**
+     * @return mixed
+     */
+    public function getSummary()
+    {
+        return $this->summary;
+    }
+
+    /**
+     * @param mixed $summary
+     */
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
+    }
 
     /**
      * @return mixed

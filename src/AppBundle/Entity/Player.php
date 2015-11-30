@@ -8,9 +8,25 @@ class Player
     private $name;
     private $lastname;
     private $number;
-    private $age;
+    private $birthday;
     private $nationality;
-    private $club;
+    private $summary;
+
+    /**
+     * @return mixed
+     */
+    public function getSummary()
+    {
+        return $this->summary;
+    }
+
+    /**
+     * @param mixed $summary
+     */
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
+    }
 
     /**
      * @return mixed
@@ -79,22 +95,6 @@ class Player
     /**
      * @return mixed
      */
-    public function getAge()
-    {
-        return $this->age;
-    }
-
-    /**
-     * @param mixed $age
-     */
-    public function setAge($age)
-    {
-        $this->age = $age;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getNationality()
     {
         return $this->nationality;
@@ -111,16 +111,16 @@ class Player
     /**
      * @return mixed
      */
-    public function getClub()
+    public function getBirthday()
     {
-        return $this->club;
+        return $this->birthday;
     }
 
     /**
-     * @param mixed $club
+     * @param mixed $birthday
      */
-    public function setClub($club)
+    public function setBirthday($birthday)
     {
-        $this->club = $club;
+        $this->birthday = $birthday;
     }
 }

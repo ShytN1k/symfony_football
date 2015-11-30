@@ -15,8 +15,8 @@ class CoachController extends Controller
     /**
      * @Route("/{teamname}/coach{id}", name="coaches", requirements={"id" = "[0-9]+"})
      * @Method("GET")
-     * @Template()
      *
+     * @param $teamname
      * @param $id
      * @return Response
      */
@@ -31,6 +31,7 @@ class CoachController extends Controller
         $coach->setExpirience($faker->numberBetween(20, 40));
         $coach->setAge($faker->numberBetween(40, 60));
         $coach->setNationality($faker->country);
+        $coach->setSummary($faker->paragraph(5));
 
         return $this->render("AppBundle:Coach:index.html.twig", array(
             'teamname' => $teamname,

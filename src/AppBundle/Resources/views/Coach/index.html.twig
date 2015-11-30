@@ -3,8 +3,8 @@
 
 {% block navlinks %}
     <li><a href="{{ path('homepage') }}">Homepage</a></li>
-    <li><a href="{{ path("teams", {"teamname": teamname} ) }}">Team</a></li>
-    <li class="active"><a href="{{ path("coaches", { "teamname": teamname, "id": coach.id} ) }}">Coaches</a></li>
+    <li><a href="{{ path("teams", {"teamname": teamname} ) }}">{{ teamname }}</a></li>
+    <li class="active"><a href="{{ path("coaches", { "teamname": teamname, "id": coach.id} ) }}">{{ coach.name }} {{ coach.lastname }}</a></li>
 {% endblock navlinks %}
 
 {% block body %}
@@ -14,14 +14,6 @@
     <p>Age: {{ coach.age }} years.</p>
     <p>Expirience: {{ coach.expirience }} years.</p>
     <p>Nationality: {{ coach.nationality }}.</p>
-    <p>Summary: standart summary.</p>
-    {#{% for i in 0..9 %}#}
-        {#{% if loop.index is odd %}#}
-            {#<h3>Information about coach {{ id|upper }} - {{ i*0.1}} + {{ loop.index }}.</h3>#}
-        {#{% else %}#}
-            {#<h3>Information about coach {{ id|raw }} - {{ i*0.1}} + {{ loop.index }}.</h3>#}
-        {#{% endif %}#}
-    {#{% endfor %}#}
-    {#<hr>#}
+    <p style="width: 50%">Summary: {{ coach.summary }}</p>
     <a href="{{ path('homepage') }}" class="btn btn-default">To main menu</a>
 {% endblock %}

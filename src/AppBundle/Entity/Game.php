@@ -9,6 +9,23 @@ class Game
     private $team1;
     private $team2;
     private $date;
+    private $summary;
+
+    /**
+     * @return mixed
+     */
+    public function getSummary()
+    {
+        return $this->summary;
+    }
+
+    /**
+     * @param mixed $summary
+     */
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
+    }
 
     /**
      * @return mixed

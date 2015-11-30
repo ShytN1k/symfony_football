@@ -6,7 +6,23 @@ class Country
 {
     private $id;
     private $name;
-    private $continent;
+    private $summary;
+
+    /**
+     * @return mixed
+     */
+    public function getSummary()
+    {
+        return $this->summary;
+    }
+
+    /**
+     * @param mixed $summary
+     */
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
+    }
 
     /**
      * @return mixed
@@ -38,21 +54,5 @@ class Country
     public function setName($name)
     {
         $this->name = $name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getContinent()
-    {
-        return $this->continent;
-    }
-
-    /**
-     * @param mixed $continent
-     */
-    public function setContinent($continent)
-    {
-        $this->continent = $continent;
     }
 }

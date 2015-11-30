@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+
+{% block navlinks %}
+    <li><a href="{{ path('homepage') }}">Homepage</a></li>
+    <li><a href="{{ path("teams", {"teamname": teamname} ) }}">{{ teamname }}</a></li>
+    <li class="active"><a href="{{ path("coaches", { "teamname": teamname, "id": player.id} ) }}">{{ player.name }} {{ player.lastname }}</a></li>
+{% endblock navlinks %}
+
+{% block body %}
+
+    <p>First name: {{ player.name }}.</p>
+    <p>Last name: {{ player.lastname }}.</p>
+    <p>Number: {{ player.number }}.</p>
+    <p>Birthday: {{ player.birthday|date("m/d/Y") }}.</p>
+    <p>Nationality: {{ player.nationality }}.</p>
+    <p style="width: 50%">Summary: {{ player.summary }}</p>
+    <a href="{{ path('homepage') }}" class="btn btn-default">To main menu</a>
+{% endblock %}

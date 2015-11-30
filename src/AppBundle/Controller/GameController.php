@@ -2,11 +2,13 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Game;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Faker;
 
 class GameController extends Controller
 {
@@ -17,18 +19,21 @@ class GameController extends Controller
      * @param $id
      * @return Response
      */
-    public function indexAction($id)
+    public function indexAction($teamname, $id)
     {
-        return new Response('<!DOCTYPE html>
-                             <html>
-                                <head>
-                                    <meta charset="UTF-8">
-                                </head>
-                                <body>
-                                    <h3>Information about game '. $id.'.</h3>
-                                    <hr>
-                                    <a href="/">To main menu</a>
-                                </body>
-                             </html>');
+        $faker = Faker\Factory::create();
+
+        $game = new Game();
+        $game->setId($id);
+        $game->setStadium($faker->country);
+        $game->setTeam1($teamname);
+        $game->setTeam2('Team '. $faker->numberBetween(1, 24));
+        $game->setDate($faker->dateTimeThisYear);
+        $game->setSummary($faker->paragraph(5));
+
+        return $this->render("AppBundle:Game:index.html.twig", array(
+            'teamname' => $teamname,
+            'game' => $game
+        ));
     }
 }

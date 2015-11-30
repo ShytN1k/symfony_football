@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+
+{% block navlinks %}
+    <li><a href="{{ path('homepage') }}">Homepage</a></li>
+    <li><a href="{{ path("teams", {"teamname": teamname} ) }}">{{ teamname }}</a></li>
+    <li class="active"><a href="{{ path("countries", { "teamname": teamname, "countryName": country.name} ) }}">{{ country.name }}</a></li>
+{% endblock navlinks %}
+
+{% block body %}
+
+    <p>Country: {{ country.name }}.</p>
+    <p style="width: 50%">Summary: {{ country.summary }}</p>
+    <a href="{{ path('homepage') }}" class="btn btn-default">To main menu</a>
+{% endblock %}

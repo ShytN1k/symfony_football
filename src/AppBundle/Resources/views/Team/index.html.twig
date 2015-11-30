@@ -8,34 +8,27 @@
 {% block body %}
     <p>
         Country:
-        <a href="{{ path('countries', {"teamname": teamname, "country": teamname} ) }}">{{ country }}</a>
+        <a href="{{ path('countries', {"teamname": teamname, "countryName": teamname} ) }}">{{ country }}</a>
     </p>
     <hr>
     Players:
     <br>
-    <a href="/'. $teamname. '/player1">Player 1</a><br>
-    <a href="/'. $teamname. '/player2">Player 2</a><br>
-    <a href="/'. $teamname. '/player3">Player 3</a><br>
-    <a href="/'. $teamname. '/player4">Player 4</a><br>
-    <a href="/'. $teamname. '/player5">Player 5</a><br>
-    <a href="/'. $teamname. '/player6">Player 6</a><br>
-    <a href="/'. $teamname. '/player7">Player 7</a><br>
-    <a href="/'. $teamname. '/player8">Player 8</a><br>
-    <a href="/'. $teamname. '/player9">Player 9</a><br>
-    <a href="/'. $teamname. '/player10">Player 10</a><br>
-    <a href="/'. $teamname. '/player11">Player 11</a><br>
+    {% for i in 1..team.squadNumber %}
+        <a href="{{ path('players', {"teamname": teamname, "id": loop.index} ) }}">Player {{ loop.index }}</a><br>
+    {% endfor %}
     <hr>
     Coaching stuff:
     <br>
     <a href="{{ path("coaches", { "teamname": teamname, "id": 1} ) }}">Head coach</a><br>
-    <a href="{{ path("coaches", { "teamname": teamname, "id": 2} ) }}">Assistant coach 1</a><br>
-    <a href="{{ path("coaches", { "teamname": teamname, "id": 3} ) }}">Assistant coach 2</a><br>
+    {% for i in 2..team.staffNumber %}
+        <a href="{{ path('coaches', {"teamname": teamname, "id": loop.index+1} ) }}">Assistant coach {{ loop.index+1 }}</a><br>
+    {% endfor %}
     <hr>
     Last games:
     <br>
-    <a href="/'. $teamname. '/game1">Game 1</a><br>
-    <a href="/'. $teamname. '/game2">Game 2</a><br>
-    <a href="/'. $teamname. '/game3">Game 3</a><br>
+    {% for i in 1..5 %}
+        <a href="{{ path('games', {"teamname": teamname, "id": loop.index} ) }}">Game {{ loop.index }}</a><br>
+    {% endfor %}
     <hr>
     <a href="{{ path('homepage') }}" class="btn btn-default">To main menu</a>
 {% endblock %}
