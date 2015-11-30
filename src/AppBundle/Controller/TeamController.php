@@ -27,10 +27,10 @@ class TeamController extends Controller
         $team->setName($teamname);
         $team->setSquadNumber($faker->numberBetween(20, 25));
         $team->setStaffNumber($faker->numberBetween(5, 10));
-        $country = preg_replace('/_/', ' ', $teamname);
+        $teamnameReplaced = preg_replace('/_/', ' ', $teamname);
         return $this->render("AppBundle:Team:index.html.twig", array(
             'teamname' => $teamname,
-            'country' => $country,
+            'teamnameReplaced' => $teamnameReplaced,
             'team' => $team
         ));
     }

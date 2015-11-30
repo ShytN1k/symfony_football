@@ -32,9 +32,11 @@ class CoachController extends Controller
         $coach->setAge($faker->numberBetween(40, 60));
         $coach->setNationality($faker->country);
         $coach->setSummary($faker->paragraph(5));
+        $teamnameReplaced = preg_replace('/_/', ' ', $teamname);
 
         return $this->render("AppBundle:Coach:index.html.twig", array(
             'teamname' => $teamname,
+            'teamnameReplaced' => $teamnameReplaced,
             'coach' => $coach
         ));
     }

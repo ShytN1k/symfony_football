@@ -27,9 +27,12 @@ class CountryController extends Controller
         $country = new Country();
         $country->setName($countryName);
         $country->setSummary($faker->paragraph(5));
+        $teamnameReplaced = preg_replace('/_/', ' ', $teamname);
+
 
         return $this->render("AppBundle:Country:index.html.twig", array(
             'teamname' => $teamname,
+            'teamnameReplaced' => $teamnameReplaced,
             'country' => $country
         ));
     }

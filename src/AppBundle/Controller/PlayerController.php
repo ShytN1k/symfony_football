@@ -31,9 +31,12 @@ class PlayerController extends Controller
         $player->setBirthday($faker->dateTimeBetween('-35 years', '-20 years'));
         $player->setNationality($faker->country);
         $player->setSummary($faker->paragraph(5));
+        $teamnameReplaced = preg_replace('/_/', ' ', $teamname);
+
 
         return $this->render("AppBundle:Player:index.html.twig", array(
             'teamname' => $teamname,
+            'teamnameReplaced' => $teamnameReplaced,
             'player' => $player
         ));
     }

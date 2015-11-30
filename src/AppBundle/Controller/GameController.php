@@ -23,16 +23,18 @@ class GameController extends Controller
     {
         $faker = Faker\Factory::create();
 
+        $teamnameReplaced = preg_replace('/_/', ' ', $teamname);
         $game = new Game();
         $game->setId($id);
         $game->setStadium($faker->country);
-        $game->setTeam1($teamname);
+        $game->setTeam1($teamnameReplaced);
         $game->setTeam2('Team '. $faker->numberBetween(1, 24));
         $game->setDate($faker->dateTimeThisYear);
         $game->setSummary($faker->paragraph(5));
 
         return $this->render("AppBundle:Game:index.html.twig", array(
             'teamname' => $teamname,
+            'teamnameReplaced' => $teamnameReplaced,
             'game' => $game
         ));
     }

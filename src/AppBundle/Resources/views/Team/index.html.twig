@@ -2,13 +2,13 @@
 
 {% block navlinks %}
     <li><a href="{{ path('homepage') }}">Homepage</a></li>
-    <li class="active"><a href="{{ path("teams", {"teamname": teamname} ) }}">{{ country }}</a></li>
+    <li class="active"><a href="{{ path("teams", {"teamname": teamname} ) }}">{{ teamnameReplaced }}</a></li>
 {% endblock navlinks %}
 
 {% block body %}
     <p>
         Country:
-        <a href="{{ path('countries', {"teamname": teamname, "countryName": teamname} ) }}">{{ country }}</a>
+        <a href="{{ path('countries', {"teamname": teamname, "countryName": teamname} ) }}">{{ teamnameReplaced }}</a>
     </p>
     <hr>
     Players:
