@@ -2,14 +2,66 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class Coach
+ * @package AppBundle\Entity
+ *
+ * @ORM\Table(name="coach")
+ * @ORM\Entity()
+ */
 class Coach
 {
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
     private $lastname;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     */
     private $expirience;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     */
     private $age;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
     private $nationality;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text")
+     */
     private $summary;
 
     /**
@@ -42,6 +94,8 @@ class Coach
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -58,6 +112,8 @@ class Coach
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -74,6 +130,8 @@ class Coach
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
+
+        return $this;
     }
 
     /**
@@ -90,6 +148,8 @@ class Coach
     public function setExpirience($expirience)
     {
         $this->expirience = $expirience;
+
+        return $this;
     }
 
     /**
@@ -106,6 +166,8 @@ class Coach
     public function setAge($age)
     {
         $this->age = $age;
+
+        return $this;
     }
 
     /**
@@ -122,5 +184,7 @@ class Coach
     public function setNationality($nationality)
     {
         $this->nationality = $nationality;
+
+        return $this;
     }
 }

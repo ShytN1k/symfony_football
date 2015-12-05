@@ -2,10 +2,38 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class Country
+ * @package AppBundle\Entity
+ *
+ * @ORM\Table(name="country")
+ * @ORM\Entity()
+ */
 class Country
 {
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text")
+     */
     private $summary;
 
     /**
@@ -22,6 +50,8 @@ class Country
     public function setSummary($summary)
     {
         $this->summary = $summary;
+
+        return $this;
     }
 
     /**
@@ -38,6 +68,8 @@ class Country
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -54,5 +86,7 @@ class Country
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 }

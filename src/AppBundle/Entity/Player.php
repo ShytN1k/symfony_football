@@ -2,14 +2,66 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class Player
+ * @package AppBundle\Entity
+ *
+ * @ORM\Table(name="player")
+ * @ORM\Entity()
+ */
 class Player
 {
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
     private $lastname;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     */
     private $number;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
     private $birthday;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
     private $nationality;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text")
+     */
     private $summary;
 
     /**
@@ -26,6 +78,8 @@ class Player
     public function setSummary($summary)
     {
         $this->summary = $summary;
+
+        return $this;
     }
 
     /**
@@ -42,6 +96,8 @@ class Player
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -58,6 +114,8 @@ class Player
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -74,6 +132,8 @@ class Player
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
+
+        return $this;
     }
 
     /**
@@ -90,6 +150,8 @@ class Player
     public function setNumber($number)
     {
         $this->number = $number;
+
+        return $this;
     }
 
     /**
@@ -106,6 +168,8 @@ class Player
     public function setNationality($nationality)
     {
         $this->nationality = $nationality;
+
+        return $this;
     }
 
     /**
@@ -122,5 +186,7 @@ class Player
     public function setBirthday($birthday)
     {
         $this->birthday = $birthday;
+
+        return $this;
     }
 }

@@ -2,13 +2,59 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class Game
+ * @package AppBundle\Entity
+ *
+ * @ORM\Table(name="game")
+ * @ORM\Entity()
+ */
 class Game
 {
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
     private $stadium;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
     private $team1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
     private $team2;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
     private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text")
+     */
     private $summary;
 
     /**
@@ -25,6 +71,8 @@ class Game
     public function setSummary($summary)
     {
         $this->summary = $summary;
+
+        return $this;
     }
 
     /**
@@ -41,6 +89,8 @@ class Game
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -57,6 +107,8 @@ class Game
     public function setStadium($stadium)
     {
         $this->stadium = $stadium;
+
+        return $this;
     }
 
     /**
@@ -73,6 +125,8 @@ class Game
     public function setTeam1($team1)
     {
         $this->team1 = $team1;
+
+        return $this;
     }
 
     /**
@@ -89,6 +143,8 @@ class Game
     public function setTeam2($team2)
     {
         $this->team2 = $team2;
+
+        return $this;
     }
 
     /**
@@ -105,5 +161,7 @@ class Game
     public function setDate($date)
     {
         $this->date = $date;
+
+        return $this;
     }
 }

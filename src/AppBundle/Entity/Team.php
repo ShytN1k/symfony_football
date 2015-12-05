@@ -2,11 +2,45 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class Team
+ * @package AppBundle\Entity
+ *
+ * @ORM\Table(name="team")
+ * @ORM\Entity()
+ */
 class Team
 {
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
     private $name;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     */
     private $squadNumber;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     */
     private $staffNumber;
 
     /**
@@ -23,6 +57,8 @@ class Team
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -39,6 +75,8 @@ class Team
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -55,6 +93,8 @@ class Team
     public function setSquadNumber($squadNumber)
     {
         $this->squadNumber = $squadNumber;
+
+        return $this;
     }
 
     /**
@@ -71,5 +111,7 @@ class Team
     public function setStaffNumber($staffNumber)
     {
         $this->staffNumber = $staffNumber;
+
+        return $this;
     }
 }
