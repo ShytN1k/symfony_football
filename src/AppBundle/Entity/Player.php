@@ -65,22 +65,11 @@ class Player
     private $summary;
 
     /**
-     * @return mixed
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team", inversedBy="player")
      */
-    public function getSummary()
-    {
-        return $this->summary;
-    }
-
-    /**
-     * @param mixed $summary
-     */
-    public function setSummary($summary)
-    {
-        $this->summary = $summary;
-
-        return $this;
-    }
+    private $team;
 
     /**
      * @return mixed
@@ -91,7 +80,8 @@ class Player
     }
 
     /**
-     * @param mixed $id
+     * @param $id
+     * @return $this
      */
     public function setId($id)
     {
@@ -109,7 +99,8 @@ class Player
     }
 
     /**
-     * @param mixed $name
+     * @param $name
+     * @return $this
      */
     public function setName($name)
     {
@@ -127,7 +118,8 @@ class Player
     }
 
     /**
-     * @param mixed $lastname
+     * @param $lastname
+     * @return $this
      */
     public function setLastname($lastname)
     {
@@ -145,7 +137,8 @@ class Player
     }
 
     /**
-     * @param mixed $number
+     * @param $number
+     * @return $this
      */
     public function setNumber($number)
     {
@@ -155,7 +148,7 @@ class Player
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getNationality()
     {
@@ -163,7 +156,8 @@ class Player
     }
 
     /**
-     * @param mixed $nationality
+     * @param $nationality
+     * @return $this
      */
     public function setNationality($nationality)
     {
@@ -181,11 +175,31 @@ class Player
     }
 
     /**
-     * @param mixed $birthday
+     * @param $birthday
+     * @return $this
      */
     public function setBirthday($birthday)
     {
         $this->birthday = $birthday;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSummary()
+    {
+        return $this->summary;
+    }
+
+    /**
+     * @param $summary
+     * @return $this
+     */
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
 
         return $this;
     }

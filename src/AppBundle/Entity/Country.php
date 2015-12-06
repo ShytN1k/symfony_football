@@ -37,6 +37,13 @@ class Country
     private $summary;
 
     /**
+     * @var int
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Team", inversedBy="team")
+     */
+    private $team;
+
+    /**
      * @return mixed
      */
     public function getSummary()
@@ -45,7 +52,8 @@ class Country
     }
 
     /**
-     * @param mixed $summary
+     * @param $summary
+     * @return $this
      */
     public function setSummary($summary)
     {
@@ -63,7 +71,8 @@ class Country
     }
 
     /**
-     * @param mixed $id
+     * @param $id
+     * @return $this
      */
     public function setId($id)
     {
@@ -81,7 +90,8 @@ class Country
     }
 
     /**
-     * @param mixed $name
+     * @param $name
+     * @return $this
      */
     public function setName($name)
     {

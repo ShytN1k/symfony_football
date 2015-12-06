@@ -65,20 +65,11 @@ class Coach
     private $summary;
 
     /**
-     * @return mixed
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team", inversedBy="coach")
      */
-    public function getSummary()
-    {
-        return $this->summary;
-    }
-
-    /**
-     * @param mixed $summary
-     */
-    public function setSummary($summary)
-    {
-        $this->summary = $summary;
-    }
+    private $team;
 
     /**
      * @return mixed
@@ -89,7 +80,8 @@ class Coach
     }
 
     /**
-     * @param mixed $id
+     * @param $id
+     * @return $this
      */
     public function setId($id)
     {
@@ -107,7 +99,8 @@ class Coach
     }
 
     /**
-     * @param mixed $name
+     * @param $name
+     * @return $this
      */
     public function setName($name)
     {
@@ -125,7 +118,8 @@ class Coach
     }
 
     /**
-     * @param mixed $lastname
+     * @param $lastname
+     * @return $this
      */
     public function setLastname($lastname)
     {
@@ -143,7 +137,8 @@ class Coach
     }
 
     /**
-     * @param mixed $expirience
+     * @param $expirience
+     * @return $this
      */
     public function setExpirience($expirience)
     {
@@ -161,7 +156,8 @@ class Coach
     }
 
     /**
-     * @param mixed $age
+     * @param $age
+     * @return $this
      */
     public function setAge($age)
     {
@@ -179,11 +175,31 @@ class Coach
     }
 
     /**
-     * @param mixed $nationality
+     * @param $nationality
+     * @return $this
      */
     public function setNationality($nationality)
     {
         $this->nationality = $nationality;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSummary()
+    {
+        return $this->summary;
+    }
+
+    /**
+     * @param $summary
+     * @return $this
+     */
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
 
         return $this;
     }

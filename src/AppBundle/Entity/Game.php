@@ -58,6 +58,13 @@ class Game
     private $summary;
 
     /**
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team", inversedBy="game")
+     */
+    private $team;
+
+    /**
      * @return mixed
      */
     public function getSummary()
@@ -66,7 +73,8 @@ class Game
     }
 
     /**
-     * @param mixed $summary
+     * @param $summary
+     * @return $this
      */
     public function setSummary($summary)
     {
@@ -84,7 +92,8 @@ class Game
     }
 
     /**
-     * @param mixed $id
+     * @param $id
+     * @return $this
      */
     public function setId($id)
     {
@@ -102,7 +111,8 @@ class Game
     }
 
     /**
-     * @param mixed $stadium
+     * @param $stadium
+     * @return $this
      */
     public function setStadium($stadium)
     {
@@ -120,7 +130,8 @@ class Game
     }
 
     /**
-     * @param mixed $team1
+     * @param $team1
+     * @return $this
      */
     public function setTeam1($team1)
     {
@@ -138,7 +149,8 @@ class Game
     }
 
     /**
-     * @param mixed $team2
+     * @param $team2
+     * @return $this
      */
     public function setTeam2($team2)
     {
@@ -156,7 +168,8 @@ class Game
     }
 
     /**
-     * @param mixed $date
+     * @param $date
+     * @return $this
      */
     public function setDate($date)
     {

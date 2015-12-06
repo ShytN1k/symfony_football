@@ -51,6 +51,34 @@ class Team
     private $staffNumber;
 
     /**
+     * @var int
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Country", mappedBy="team")
+     */
+    private $country;
+
+    /**
+     * @var int
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Player", mappedBy="team")
+     */
+    private $player;
+
+    /**
+     * @var int
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Coach", mappedBy="team")
+     */
+    private $coach;
+
+    /**
+     * @var int
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Game", mappedBy="team")
+     */
+    private $game;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -59,7 +87,8 @@ class Team
     }
 
     /**
-     * @param mixed $id
+     * @param $id
+     * @return $this
      */
     public function setId($id)
     {
@@ -77,7 +106,8 @@ class Team
     }
 
     /**
-     * @param mixed $name
+     * @param $name
+     * @return $this
      */
     public function setName($name)
     {
@@ -95,7 +125,8 @@ class Team
     }
 
     /**
-     * @param mixed $squadNumber
+     * @param $squadNumber
+     * @return $this
      */
     public function setSquadNumber($squadNumber)
     {
@@ -113,7 +144,8 @@ class Team
     }
 
     /**
-     * @param mixed $staffNumber
+     * @param $staffNumber
+     * @return $this
      */
     public function setStaffNumber($staffNumber)
     {
@@ -131,7 +163,8 @@ class Team
     }
 
     /**
-     * @param string $url
+     * @param $url
+     * @return $this
      */
     public function setUrl($url)
     {
