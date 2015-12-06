@@ -16,6 +16,7 @@ class GameController extends Controller
      * @Route("/{teamname}/game{id}", name="games", requirements={"id" = "[0-9]+"})
      * @Method("GET")
      *
+     * @param $teamname
      * @param $id
      * @return Response
      */

@@ -30,6 +30,13 @@ class Team
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $url;
+
+    /**
      * @var int
      *
      * @ORM\Column(type="integer")
@@ -111,6 +118,24 @@ class Team
     public function setStaffNumber($staffNumber)
     {
         $this->staffNumber = $staffNumber;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string $url
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
 
         return $this;
     }
