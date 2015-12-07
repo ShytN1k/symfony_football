@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -70,6 +71,34 @@ class Player
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team", inversedBy="player")
      */
     private $team;
+
+    /**
+     * @var int
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Coach", inversedBy="players")
+     */
+    private $coaches;
+
+    public function __construct()
+    {
+        $this->coaches = new ArrayCollection();
+    }
+
+    /**
+     * @param Coach $coach
+     */
+    public function addCoach(Coach $coach)
+    {
+        $this->coaches[] = $coach;
+    }
+    /**
+     *
+     * @param Coach $coach
+     */
+    public function removeCoach(Coach $coach)
+    {
+        $this->coaches->removeElement($coach);
+    }
 
     /**
      * @return mixed
@@ -200,6 +229,25 @@ class Player
     public function setSummary($summary)
     {
         $this->summary = $summary;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTeam()
+    {
+        return $this->team;
+    }
+
+    /**
+     * @param $team
+     * @return $this
+     */
+    public function setTeam($team)
+    {
+        $this->team = $team;
 
         return $this;
     }

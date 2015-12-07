@@ -177,4 +177,23 @@ class Game
 
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getTeam()
+    {
+        return $this->team;
+    }
+
+    /**
+     * @param $team
+     * @return $this
+     */
+    public function setTeam($team)
+    {
+        $this->team = $team;
+
+        return $this;
+    }
 }

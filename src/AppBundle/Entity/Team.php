@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -62,21 +63,76 @@ class Team
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Player", mappedBy="team")
      */
-    private $player;
+    private $players;
 
     /**
      * @var int
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Coach", mappedBy="team")
      */
-    private $coach;
+    private $coaches;
 
     /**
      * @var int
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Game", mappedBy="team")
      */
-    private $game;
+    private $games;
+
+    public function __construct()
+    {
+        $this->players = new ArrayCollection();
+        $this->coaches = new ArrayCollection();
+        $this->games = new ArrayCollection();
+    }
+
+    /**
+     * @param Player $player
+     */
+    public function addPlayer(Player $player)
+    {
+        $this->players[] = $player;
+    }
+    /**
+     *
+     * @param Player $player
+     */
+    public function removePlayer(Player $player)
+    {
+        $this->players->removeElement($player);
+    }
+
+    /**
+     * @param Coach $coach
+     */
+    public function addCoach(Coach $coach)
+    {
+        $this->coaches[] = $coach;
+    }
+    /**
+     *
+     * @param Coach $coach
+     */
+    public function removeCoach(Coach $coach)
+    {
+        $this->coaches->removeElement($coach);
+    }
+
+    /**
+     * @param Game $game
+     */
+    public function addGame(Game $game)
+    {
+        $this->games[] = $game;
+    }
+    /**
+     *
+     * @param Game $game
+     */
+    public function removeGame(Game $game)
+    {
+        $this->games->removeElement($game);
+    }
 
     /**
      * @return mixed
@@ -169,6 +225,25 @@ class Team
     public function setUrl($url)
     {
         $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param $country
+     * @return $this
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
 
         return $this;
     }

@@ -78,6 +78,7 @@ class GenerateDBController extends Controller
             $country = new Country();
             $country->setName($team->getName());
             $country->setSummary($faker->paragraph(5));
+            $country->setTeam($team);
             array_push($counties, $country);
 
             for ($i = 0; $i < $team->getSquadNumber(); $i++) {
@@ -88,6 +89,7 @@ class GenerateDBController extends Controller
                 $player->setBirthday($faker->dateTimeBetween('-35 years', '-20 years'));
                 $player->setNationality($faker->country);
                 $player->setSummary($faker->paragraph(5));
+                $player->setTeam($team);
                 array_push($players, $player);
             }
 
@@ -99,6 +101,7 @@ class GenerateDBController extends Controller
                 $coach->setAge($faker->numberBetween(40, 60));
                 $coach->setNationality($faker->country);
                 $coach->setSummary($faker->paragraph(5));
+                $coach->setTeam($team);
                 array_push($coaches, $coach);
             }
 
@@ -109,6 +112,7 @@ class GenerateDBController extends Controller
                 $game->setTeam2('Team '. $faker->numberBetween(1, 24));
                 $game->setDate($faker->dateTimeThisYear);
                 $game->setSummary($faker->paragraph(5));
+                $game->setTeam($team);
                 array_push($games, $game);
             }
         }
