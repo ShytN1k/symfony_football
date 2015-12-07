@@ -39,7 +39,7 @@ class Country
     /**
      * @var int
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Team", inversedBy="team")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Team", inversedBy="country")
      */
     private $team;
 

@@ -60,7 +60,7 @@ class Game
     /**
      * @var int
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team", inversedBy="game")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team", inversedBy="games")
      */
     private $team;
 

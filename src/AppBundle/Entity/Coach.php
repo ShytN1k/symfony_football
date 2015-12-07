@@ -68,7 +68,7 @@ class Coach
     /**
      * @var int
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team", inversedBy="coach")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team", inversedBy="coaches")
      */
     private $team;
 
@@ -250,5 +250,15 @@ class Coach
         $this->team = $team;
 
         return $this;
+    }
+
+    /**
+     * Get players
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlayers()
+    {
+        return $this->players;
     }
 }
