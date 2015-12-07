@@ -9,9 +9,9 @@ class CoachControllerTest extends WebTestCase
     public function testIndex()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/Republic_of_Ireland/coach2');
+        $crawler = $client->request('GET', '/Ukraine/coach2');
 
-        $this->assertContains('Republic of Ireland', $crawler->filter('')->text());
+        $this->assertContains('Ukraine', $crawler->filter('')->text());
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertContains('First name: ', $crawler->filter('')->text());
         $this->assertContains('Last name: ', $crawler->filter('')->text());
