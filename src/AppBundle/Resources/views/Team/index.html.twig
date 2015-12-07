@@ -2,32 +2,32 @@
 
 {% block navlinks %}
     <li><a href="{{ path('homepage') }}">Homepage</a></li>
-    <li class="active"><a href="{{ path("teams", {"teamname": teamname} ) }}">{{ teamnameReplaced }}</a></li>
+    <li class="active"><a href="{{ path("teams", {"teamname": team.url} ) }}">{{ team.name }}</a></li>
 {% endblock navlinks %}
 
 {% block body %}
     <p>
         Country:
-        <a href="{{ path('countries', {"teamname": teamname, "countryName": teamname} ) }}">{{ teamnameReplaced }}</a>
+        <a href="{{ path('countries', {"teamname": team.url, "countryName": team.url} ) }}">{{ team.name }}</a>
     </p>
     <hr>
     Players:
     <br>
     {% for i in 1..team.squadNumber %}
-        <a href="{{ path('players', {"teamname": teamname, "id": loop.index} ) }}">Player {{ loop.index }}</a><br>
+        <a href="{{ path('players', {"teamname": team.url, "id": loop.index} ) }}">Player {{ loop.index }}</a><br>
     {% endfor %}
     <hr>
     Coaching stuff:
     <br>
-    <a href="{{ path("coaches", { "teamname": teamname, "id": 1} ) }}">Head coach</a><br>
+    <a href="{{ path("coaches", { "teamname": team.url, "id": 1} ) }}">Head coach</a><br>
     {% for i in 2..team.staffNumber %}
-        <a href="{{ path('coaches', {"teamname": teamname, "id": loop.index+1} ) }}">Assistant coach {{ loop.index+1 }}</a><br>
+        <a href="{{ path('coaches', {"teamname": team.url, "id": loop.index+1} ) }}">Assistant coach {{ loop.index+1 }}</a><br>
     {% endfor %}
     <hr>
     Last games:
     <br>
     {% for i in 1..5 %}
-        <a href="{{ path('games', {"teamname": teamname, "id": loop.index} ) }}">Game {{ loop.index }}</a><br>
+        <a href="{{ path('games', {"teamname": team.url, "id": loop.index} ) }}">Game {{ loop.index }}</a><br>
     {% endfor %}
     <hr>
     <a href="{{ path('homepage') }}" class="btn btn-default">To main menu</a>

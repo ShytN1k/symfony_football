@@ -17,22 +17,18 @@ class CountryController extends Controller
      * @Method("GET")
      *
      * @param $teamname
-     * @param $country
+     * @param $countryName
      * @return Response
      */
     public function indexAction($teamname, $countryName)
     {
-        $faker = Faker\Factory::create();
-
-        $country = new Country();
-        $country->setName($countryName);
-        $country->setSummary($faker->paragraph(5));
-        $teamnameReplaced = preg_replace('/_/', ' ', $teamname);
-
+        $countryReplaced = preg_replace('/_/', ' ', $countryName);
+        /** @var Country $country */
+        $country = $this->getDoctrine()->getRepository('AppBundle:Country')->findOneBy(array('name' => $countryReplaced));
 
         return $this->render("AppBundle:Country:index.html.twig", array(
             'teamname' => $teamname,
-            'teamnameReplaced' => $teamnameReplaced,
+            'countryUrl' => $countryName,
             'country' => $country
         ));
     }

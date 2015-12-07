@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Team;
 use AppBundle\Entity\Coach;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -22,22 +23,14 @@ class CoachController extends Controller
      */
     public function indexAction($teamname, $id)
     {
-        $faker = Faker\Factory::create();
-
-        $coach = new Coach();
-        $coach->setId($id);
-        $coach->setName($faker->firstNameMale);
-        $coach->setLastname($faker->lastName);
-        $coach->setExpirience($faker->numberBetween(20, 40));
-        $coach->setAge($faker->numberBetween(40, 60));
-        $coach->setNationality($faker->country);
-        $coach->setSummary($faker->paragraph(5));
-        $teamnameReplaced = preg_replace('/_/', ' ', $teamname);
+        /** @var Team $team */
+        $team = $this->getDoctrine()->getRepository('AppBundle:Team')->findOneBy(array('url' => $teamname));
+        /** @var Coach $coach */
+        $coaches = $this->getDoctrine()->getRepository('AppBundle:Coach')->findBy(array('team' => $team));
 
         return $this->render("AppBundle:Coach:index.html.twig", array(
-            'teamname' => $teamname,
-            'teamnameReplaced' => $teamnameReplaced,
-            'coach' => $coach
+            'id' => $id,
+            'coach' => $coaches[$id-1]
         ));
     }
 }

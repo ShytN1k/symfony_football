@@ -16,6 +16,10 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $teams = $this->getDoctrine()->getRepository('AppBundle:Team')->findAll();
-        return $this->render("AppBundle:Default:index.html.twig", array('teams'=>$teams));
+        if (empty($teams)) {
+            return $this->redirectToRoute('generator');
+        } else {
+            return $this->render("AppBundle:Default:index.html.twig", array('teams'=>$teams));
+        }
     }
 }

@@ -2,13 +2,13 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Team;
 use AppBundle\Entity\Game;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Faker;
 
 class GameController extends Controller
 {
@@ -22,21 +22,18 @@ class GameController extends Controller
      */
     public function indexAction($teamname, $id)
     {
-        $faker = Faker\Factory::create();
-
-        $teamnameReplaced = preg_replace('/_/', ' ', $teamname);
-        $game = new Game();
-        $game->setId($id);
-        $game->setStadium($faker->country);
-        $game->setTeam1($teamnameReplaced);
-        $game->setTeam2('Team '. $faker->numberBetween(1, 24));
-        $game->setDate($faker->dateTimeThisYear);
-        $game->setSummary($faker->paragraph(5));
+        /** @var Team $team */
+        $team = $this->getDoctrine()->getRepository('AppBundle:Team')->findOneBy(array('url' => $teamname));
+        /** @var Game $games */
+        $games = $this->getDoctrine()->getRepository('AppBundle:Game')->findBy(array('team' => $team));
+        $team2Number = preg_replace('/Team /', '', $games[$id-1]->getTeam2());
+        /** @var Team $team */
+        $team2 = $this->getDoctrine()->getRepository('AppBundle:Team')->find($team2Number);
 
         return $this->render("AppBundle:Game:index.html.twig", array(
-            'teamname' => $teamname,
-            'teamnameReplaced' => $teamnameReplaced,
-            'game' => $game
+            'id' => $id,
+            'game' => $games[$id-1],
+            'team2' => $team2->getName()
         ));
     }
 }

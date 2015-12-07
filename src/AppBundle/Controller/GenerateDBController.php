@@ -134,5 +134,7 @@ class GenerateDBController extends Controller
         }
 
         $em->flush();
+
+        return $this->render("AppBundle:GenerateDB:index.html.twig");
     }
 }
