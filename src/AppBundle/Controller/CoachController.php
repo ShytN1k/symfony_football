@@ -23,14 +23,12 @@ class CoachController extends Controller
      */
     public function indexAction($teamname, $id)
     {
-        /** @var Team $team */
-        $team = $this->getDoctrine()->getRepository('AppBundle:Team')->findOneBy(array('url' => $teamname));
         /** @var Coach $coach */
-        $coaches = $this->getDoctrine()->getRepository('AppBundle:Coach')->findBy(array('team' => $team));
+        $coach = $this->getDoctrine()->getRepository('AppBundle:Coach')->getTeamCoachs($teamname);
 
         return $this->render("AppBundle:Coach:index.html.twig", array(
             'id' => $id,
-            'coach' => $coaches[$id-1]
+            'coach' => $coach[$id-1]
         ));
     }
 }

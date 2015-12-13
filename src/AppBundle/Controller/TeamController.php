@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Team;
+use AppBundle\Repositories\TeamRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -19,10 +19,10 @@ class TeamController extends Controller
      */
     public function indexAction($teamname)
     {
-        /** @var Team $team */
-        $team = $this->getDoctrine()->getRepository('AppBundle:Team')->findOneBy(array('url' => $teamname));
+        /** @var TeamRepository $team */
+        $team = $this->getDoctrine()->getRepository('AppBundle:Team')->getTeamDeps($teamname);
         return $this->render("AppBundle:Team:index.html.twig", array(
-            'team' => $team
+            'team' => $team[0]
         ));
     }
 }

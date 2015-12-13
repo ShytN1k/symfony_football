@@ -21,10 +21,8 @@ class PlayerController extends Controller
      */
     public function indexAction($teamname, $id)
     {
-        /** @var Team $team */
-        $team = $this->getDoctrine()->getRepository('AppBundle:Team')->findOneBy(array('url' => $teamname));
         /** @var Player $players */
-        $players = $this->getDoctrine()->getRepository('AppBundle:Player')->findBy(array('team' => $team));
+        $players = $this->getDoctrine()->getRepository('AppBundle:Player')->getTeamPlayers($teamname);
 
         return $this->render("AppBundle:Player:index.html.twig", array(
             'id' => $id,

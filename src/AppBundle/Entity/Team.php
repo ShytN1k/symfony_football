@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @package AppBundle\Entity
  *
  * @ORM\Table(name="team")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repositories\TeamRepository")
  */
 class Team
 {
@@ -54,28 +54,28 @@ class Team
     /**
      * @var int
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Country", mappedBy="team")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Country", mappedBy="team", cascade={"persist"}, orphanRemoval=true)
      */
     private $country;
 
     /**
      * @var int
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Player", mappedBy="team")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Player", mappedBy="team", cascade={"persist"}, orphanRemoval=true)
      */
     private $players;
 
     /**
      * @var int
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Coach", mappedBy="team")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Coach", mappedBy="team", cascade={"persist"}, orphanRemoval=true)
      */
     private $coaches;
 
     /**
      * @var int
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Game", mappedBy="team")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Game", mappedBy="team", cascade={"persist"}, orphanRemoval=true)
      */
     private $games;
 

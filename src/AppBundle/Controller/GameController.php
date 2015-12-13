@@ -22,10 +22,8 @@ class GameController extends Controller
      */
     public function indexAction($teamname, $id)
     {
-        /** @var Team $team */
-        $team = $this->getDoctrine()->getRepository('AppBundle:Team')->findOneBy(array('url' => $teamname));
         /** @var Game $games */
-        $games = $this->getDoctrine()->getRepository('AppBundle:Game')->findBy(array('team' => $team));
+        $games = $this->getDoctrine()->getRepository('AppBundle:Game')->getTeamGames($teamname);
         $team2Number = preg_replace('/Team /', '', $games[$id-1]->getTeam2());
         /** @var Team $team */
         $team2 = $this->getDoctrine()->getRepository('AppBundle:Team')->find($team2Number);

@@ -27,8 +27,6 @@ class CountryController extends Controller
         $country = $this->getDoctrine()->getRepository('AppBundle:Country')->findOneBy(array('name' => $countryReplaced));
 
         return $this->render("AppBundle:Country:index.html.twig", array(
-            'teamname' => $teamname,
-            'countryUrl' => $countryName,
             'country' => $country
         ));
     }
