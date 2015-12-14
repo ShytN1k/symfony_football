@@ -19,10 +19,15 @@ class TeamController extends Controller
      */
     public function indexAction($teamname)
     {
+        $teamname = preg_replace('/_/', ' ', $teamname);
         /** @var TeamRepository $team */
-        $team = $this->getDoctrine()->getRepository('AppBundle:Team')->getTeamDeps($teamname);
+        $teams = $this->getDoctrine()->getRepository('AppBundle:Team')->getTeamDeps($teamname);
+        foreach ($teams as $team) {
+            $team->setUrl(preg_replace('/ /', '_', $team->getUrl()));
+            $team->setUrl(preg_replace('/-/', '_', $team->getUrl()));
+        }
         return $this->render("AppBundle:Team:index.html.twig", array(
-            'team' => $team[0]
+            'team' => $teams[0]
         ));
     }
 }

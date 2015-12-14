@@ -19,6 +19,10 @@ class DefaultController extends Controller
         if (empty($teams)) {
             return $this->redirectToRoute('generator');
         } else {
+            foreach ($teams as $team) {
+                $team->setUrl(preg_replace('/ /', '_', $team->getUrl()));
+                $team->setUrl(preg_replace('/-/', '_', $team->getUrl()));
+            }
             return $this->render("AppBundle:Default:index.html.twig", array('teams'=>$teams));
         }
     }
