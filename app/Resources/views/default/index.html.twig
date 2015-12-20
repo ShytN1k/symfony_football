@@ -13,6 +13,7 @@
 
                     Your application is ready to start working on it at:
                     <code>{{ base_dir }}/</code>
+                    {{ path("coaches") }}
                 </p>
             </div>
 
@@ -47,7 +48,8 @@
 {% endblock %}
 
 {% block stylesheets %}
-<style>
+    {{ parent() }}
+    <style>
     body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
     h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
     h1 { font-size: 36px; }

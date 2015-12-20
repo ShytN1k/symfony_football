@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<ul>
+    {% for team in teams %}
+        <li>
+            <a href="{{ path('teams', {"teamname": team.url} )}}">{{ team.name }} National Football Team</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
