@@ -3,8 +3,8 @@
 
 {% block navlinks %}
     <li><a href="{{ path('homepage') }}">Homepage</a></li>
-    <li><a href="{{ path("teams", {"teamname": country.team.url} ) }}">{{ country.name }}</a></li>
-    <li class="active"><a href="{{ path("countries", { "teamname": country.team.url, "countryName": country.team.url} ) }}">{{ country.name }}</a></li>
+    <li><a href="{{ path("teams", {"teamId": country.team.id} ) }}">{{ country.name }}</a></li>
+    <li class="active"><a href="{{ path("countries", { "teamId": country.team.id, "countryId": country.id} ) }}">{{ country.name }}</a></li>
 {% endblock navlinks %}
 
 {% block body %}

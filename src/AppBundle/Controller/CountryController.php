@@ -13,18 +13,19 @@ use Faker;
 class CountryController extends Controller
 {
     /**
-     * @Route("/{teamname}/{countryName}", name="countries", requirements={"countryName" = "[_a-zA-Z]+"})
+     * @Route("/team{teamId}/country{countryId}", name="countries", requirements={
+     *      "teamId" = "[0-9]+",
+     *      "countryId" = "[0-9]+"
+     * })
      * @Method("GET")
      *
-     * @param $teamname
-     * @param $countryName
+     * @param $countryId
      * @return Response
      */
-    public function indexAction($teamname, $countryName)
+    public function indexAction($countryId)
     {
-        $countryReplaced = preg_replace('/_/', ' ', $countryName);
         /** @var Country $country */
-        $country = $this->getDoctrine()->getRepository('AppBundle:Country')->findOneBy(array('name' => $countryReplaced));
+        $country = $this->getDoctrine()->getRepository('AppBundle:Country')->find($countryId);
 
         return $this->render("AppBundle:Country:index.html.twig", array(
             'country' => $country

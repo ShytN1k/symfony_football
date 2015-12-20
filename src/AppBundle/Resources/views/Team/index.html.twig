@@ -3,35 +3,35 @@
 {% block navlinks %}
     <li><a href="{{ path('homepage') }}">Homepage</a></li>
     {% dump(team) %}
-    <li class="active"><a href="{{ path("teams", {"teamname": team.url} ) }}">{{ team.name }}</a></li>
+    <li class="active"><a href="{{ path("teams", {"teamId": team.id} ) }}">{{ team.name }}</a></li>
 {% endblock navlinks %}
 
 {% block body %}
     <p>
         Country:
-        <a href="{{ path('countries', {"teamname": team.url, "countryName": team.url} ) }}">{{ team.country.name }}</a>
+        <a href="{{ path('countries', {"teamId": team.id, "countryId": team.id} ) }}">{{ team.country.name }}</a>
     </p>
     <hr>
     Players:
     <br>
     {% for player in team.players %}
-        <a href="{{ path('players', {"teamname": team.url, "id": loop.index} ) }}">Player {{ loop.index }}: {{ player.name }} {{ player.lastname }}</a><br>
+        <a href="{{ path('players', {"teamId": team.id, "id": loop.index} ) }}">Player {{ loop.index }}: {{ player.name }} {{ player.lastname }}</a><br>
     {% endfor %}
     <hr>
     Coaching stuff:
     <br>
     {% for coach in team.coaches %}
         {% if loop.index == 1 %}
-            <a href="{{ path("coaches", { "teamname": team.url, "id": 1} ) }}">Head coach: {{ coach.name }} {{ coach.lastname }}</a><br>
+            <a href="{{ path("coaches", { "teamId": team.id, "id": 1} ) }}">Head coach: {{ coach.name }} {{ coach.lastname }}</a><br>
         {% else %}
-            <a href="{{ path('coaches', {"teamname": team.url, "id": loop.index} ) }}">Assistant coach {{ loop.index }}: {{ coach.name }} {{ coach.lastname }}</a><br>
+            <a href="{{ path('coaches', {"teamId": team.id, "id": loop.index} ) }}">Assistant coach {{ loop.index }}: {{ coach.name }} {{ coach.lastname }}</a><br>
         {% endif %}
     {% endfor %}
     <hr>
     Last games:
     <br>
     {% for i in 1..5 %}
-        <a href="{{ path('games', {"teamname": team.url, "id": loop.index} ) }}">Game {{ loop.index }}</a><br>
+        <a href="{{ path('games', {"teamId": team.id, "id": loop.index} ) }}">Game {{ loop.index }}</a><br>
     {% endfor %}
     <hr>
     <a href="{{ path('homepage') }}" class="btn btn-default">To main menu</a>

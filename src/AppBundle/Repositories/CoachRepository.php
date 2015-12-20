@@ -5,10 +5,10 @@ use Doctrine\ORM\EntityRepository;
 
 class CoachRepository extends EntityRepository
 {
-    public function getTeamCoachs($teamname)
+    public function getTeamCoachs($teamId)
     {
         return $this->getEntityManager()->createQuery(
-            "SELECT t, ch FROM AppBundle\Entity\Coach ch JOIN ch.team t WHERE t.url = :teamname"
-        )->setParameter('teamname', $teamname)->getResult();
+            "SELECT t, ch FROM AppBundle\Entity\Coach ch JOIN ch.team t WHERE t.id = :teamId"
+        )->setParameter('teamId', $teamId)->getResult();
     }
 }

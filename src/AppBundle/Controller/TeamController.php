@@ -11,21 +11,17 @@ use Symfony\Component\HttpFoundation\Response;
 class TeamController extends Controller
 {
     /**
-     * @Route("/{teamname}", name="teams", requirements={"teamname" = "[_a-zA-Z]+"})
+     * @Route("/team{teamId}", name="teams", requirements={"teamId" = "[0-9]+"})
      * @Method("GET")
      *
-     * @param $teamname
+     * @param $teamId
      * @return Response
      */
-    public function indexAction($teamname)
+    public function indexAction($teamId)
     {
-        $teamname = preg_replace('/_/', ' ', $teamname);
-        /** @var TeamRepository $team */
-        $teams = $this->getDoctrine()->getRepository('AppBundle:Team')->getTeamDeps($teamname);
-        foreach ($teams as $team) {
-            $team->setUrl(preg_replace('/ /', '_', $team->getUrl()));
-            $team->setUrl(preg_replace('/-/', '_', $team->getUrl()));
-        }
+        /** @var TeamRepository $teams */
+        $teams = $this->getDoctrine()->getRepository('AppBundle:Team')->getTeamDeps($teamId);
+
         return $this->render("AppBundle:Team:index.html.twig", array(
             'team' => $teams[0]
         ));

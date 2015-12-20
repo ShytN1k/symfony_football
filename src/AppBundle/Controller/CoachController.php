@@ -14,21 +14,24 @@ use Faker;
 class CoachController extends Controller
 {
     /**
-     * @Route("/{teamname}/coach{id}", name="coaches", requirements={"id" = "[0-9]+"})
+     * @Route("/team{teamId}/coach{coachId}", name="coaches", requirements={
+     *      "teamId" = "[0-9]+",
+     *      "coachId" = "[0-9]+"
+     * })
      * @Method("GET")
      *
-     * @param $teamname
-     * @param $id
+     * @param $teamId
+     * @param $coachId
      * @return Response
      */
-    public function indexAction($teamname, $id)
+    public function indexAction($teamId, $coachId)
     {
-        /** @var Coach $coach */
-        $coach = $this->getDoctrine()->getRepository('AppBundle:Coach')->getTeamCoachs($teamname);
+        /** @var Coach $coaches */
+        $coaches = $this->getDoctrine()->getRepository('AppBundle:Coach')->getTeamCoachs($teamId);
 
         return $this->render("AppBundle:Coach:index.html.twig", array(
-            'id' => $id,
-            'coach' => $coach[$id-1]
+            'id' => $coachId,
+            'coach' => $coaches[$coachId-1]
         ));
     }
 }
