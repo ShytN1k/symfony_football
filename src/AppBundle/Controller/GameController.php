@@ -13,24 +13,28 @@ use Symfony\Component\HttpFoundation\Response;
 class GameController extends Controller
 {
     /**
-     * @Route("/{teamname}/game{id}", name="games", requirements={"id" = "[0-9]+"})
+     * @Route("/team{teamId}/game{gameId}", name="games", requirements={
+     *      "teamId" = "[0-9]+",
+     *      "gameId" = "[0-9]+"
+     * })
      * @Method("GET")
      *
-     * @param $teamname
-     * @param $id
+     * @param $teamId
+     * @param $gameId
      * @return Response
      */
-    public function indexAction($teamname, $id)
+    public function indexAction($teamId, $gameId)
     {
         /** @var Game $games */
-        $games = $this->getDoctrine()->getRepository('AppBundle:Game')->getTeamGames($teamname);
-        $team2Number = preg_replace('/Team /', '', $games[$id-1]->getTeam2());
+        $games = $this->getDoctrine()->getRepository('AppBundle:Game')->getTeamGames($teamId);
         /** @var Team $team */
-        $team2 = $this->getDoctrine()->getRepository('AppBundle:Team')->find($team2Number);
+        $team2 = $this->getDoctrine()->getRepository('AppBundle:Team')->find(
+            $games[$gameId-1]->getTeam2()
+        );
 
         return $this->render("AppBundle:Game:index.html.twig", array(
-            'id' => $id,
-            'game' => $games[$id-1],
+            'id' => $gameId,
+            'game' => $games[$gameId-1],
             'team2' => $team2->getName()
         ));
     }

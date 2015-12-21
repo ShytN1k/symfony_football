@@ -109,7 +109,7 @@ class GenerateDBController extends Controller
                 $game = new Game();
                 $game->setStadium($faker->country);
                 $game->setTeam1($team->getName());
-                $game->setTeam2('Team '. $faker->numberBetween(1, 24));
+                $game->setTeam2($faker->numberBetween(1, 24));
                 $game->setDate($faker->dateTimeThisYear);
                 $game->setSummary($faker->paragraph(5));
                 $game->setTeam($team);

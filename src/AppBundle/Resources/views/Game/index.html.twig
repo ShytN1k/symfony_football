@@ -3,8 +3,8 @@
 
 {% block navlinks %}
     <li><a href="{{ path('homepage') }}">Homepage</a></li>
-    <li><a href="{{ path("teams", {"teamname": game.team.url} ) }}">{{ game.team.name }}</a></li>
-    <li class="active"><a href="{{ path("games", { "teamname": game.team.url, "id": id} ) }}">{{ game.team1 }} vs {{ team2 }}</a></li>
+    <li><a href="{{ path("teams", {"teamId": game.team.id} ) }}">{{ game.team.name }}</a></li>
+    <li class="active"><a href="{{ path("games", { "teamId": game.team.id, "gameId": id} ) }}">{{ game.team1 }} vs {{ team2 }}</a></li>
 {% endblock navlinks %}
 
 {% block body %}

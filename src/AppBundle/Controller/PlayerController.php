@@ -13,20 +13,24 @@ use Symfony\Component\HttpFoundation\Response;
 class PlayerController extends Controller
 {
     /**
-     * @Route("/{teamname}/player{id}", name="players", requirements={"id" = "[0-9]+"})
+     * @Route("/team{teamId}/player{playerId}", name="players", requirements={
+     *      "teamId" = "[0-9]+",
+     *      "playerId" = "[0-9]+"
+     * })
      * @Method("GET")
      *
-     * @param $id
+     * @param $teamId
+     * @param $playerId
      * @return Response
      */
-    public function indexAction($teamname, $id)
+    public function indexAction($teamId, $playerId)
     {
         /** @var Player $players */
-        $players = $this->getDoctrine()->getRepository('AppBundle:Player')->getTeamPlayers($teamname);
+        $players = $this->getDoctrine()->getRepository('AppBundle:Player')->getTeamPlayers($teamId);
 
         return $this->render("AppBundle:Player:index.html.twig", array(
-            'id' => $id,
-            'player' => $players[$id-1]
+            'id' => $playerId,
+            'player' => $players[$playerId-1]
         ));
     }
 }
