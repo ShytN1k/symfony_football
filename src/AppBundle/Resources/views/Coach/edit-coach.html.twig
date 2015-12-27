@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block navlinks %}
+    <li><a href="{{ path('homepage') }}">Homepage</a></li>
+    <li><a href="{{ path("teams", {"teamId": coach.team.id} ) }}">{{ coach.team.name }}</a></li>
+    <li class="active"><a href="{{ path("coaches", { "teamId": coach.team.id, "coachId": coach.id} ) }}">{{ coach.name }} {{ coach.lastname }}</a></li>
+{% endblock navlinks %}
+
+{% block body %}
+
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <br>
+    <input type="submit" value="Update Coach" class="btn btn-primary" />
+    {{ form_end(edit_form) }}
+
+    <br>
+    {{ form_start(delete_form) }}
+    {{ form_widget(delete_form) }}
+    <input type="submit" value="Delete Coach" class="btn btn-danger" />
+    {{ form_end(delete_form) }}
+
+    <br>
+    <a href="{{ path("teams", {"teamId": coach.team.id} ) }}" class="btn btn-default">Back to team {{ coach.team.name }}</a>
+{% endblock %}
