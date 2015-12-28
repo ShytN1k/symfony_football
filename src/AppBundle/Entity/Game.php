@@ -37,9 +37,9 @@ class Game
     private $team1;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
      */
     private $team2;
 

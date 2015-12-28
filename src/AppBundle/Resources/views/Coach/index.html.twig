@@ -15,5 +15,5 @@
     <p>Expirience: {{ coach.expirience }} years.</p>
     <p>Nationality: {{ coach.nationality }}.</p>
     <p style="width: 50%">Summary: {{ coach.summary }}</p>
-    <a href="{{ path('homepage') }}" class="btn btn-default">To main menu</a>
+    <a href="{{ path("teams", {"teamId": coach.team.id} ) }}" class="btn btn-default">Back to team {{ coach.team.name }}</a>
 {% endblock %}

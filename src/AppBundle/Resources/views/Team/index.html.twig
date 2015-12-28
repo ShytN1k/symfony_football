@@ -7,12 +7,15 @@
 {% endblock navlinks %}
 
 {% block body %}
-    <p>
-        Country:
-        {% if team.country is not null %}
-            <a href="{{ path('countries', {"teamId": team.id, "countryId": team.country.id} ) }}">{{ team.country.name }}</a>
-        {% endif %}
-    </p>
+    Country:
+    <br>
+    {% if team.country is not null %}
+        <a href="{{ path('edit-country', {"teamId": team.id, "countryId": team.country.id} )}}" class="btn btn-primary">Edit</a>
+        <a href="{{ path('countries', {"teamId": team.id, "countryId": team.country.id} ) }}">{{ team.country.name }}</a>
+    {% endif %}
+    {% if team.country is null %}
+        <a href="{{ path('create-country', {"teamId": team.id} )}}" class="btn btn-success">Add country</a>
+    {% endif %}
     <hr>
     Players:
     <br>
@@ -41,9 +44,12 @@
     <br>
     {% for game in team.games %}
         {% if loop.index < 6 %}
+            <a href="{{ path('edit-game', {"teamId": team.id, "gameId": loop.index} )}}" class="btn btn-primary">Edit</a>
             <a href="{{ path('games', {"teamId": team.id, "gameId": loop.index} ) }}">Game {{ loop.index }}</a><br>
         {% endif %}
     {% endfor %}
+    <br>
+    <a href="{{ path('create-game', {"teamId": team.id} )}}" class="btn btn-success">Add game</a>
     <hr>
     <a href="{{ path('homepage') }}" class="btn btn-default">To main menu</a>
 {% endblock %}

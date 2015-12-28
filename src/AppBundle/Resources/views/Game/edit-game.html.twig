@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-
 {% block navlinks %}
     <li><a href="{{ path('homepage') }}">Homepage</a></li>
     <li><a href="{{ path("teams", {"teamId": game.team.id} ) }}">{{ game.team.name }}</a></li>
@@ -9,10 +8,18 @@
 
 {% block body %}
 
-    <p>Team 1: {{ game.team1 }}.</p>
-    <p>Team 2: {{ team2 }}.</p>
-    <p>Stadium: {{ game.stadium }}.</p>
-    <p>Date: {{ game.date|date("m/d/Y H:i") }}.</p>
-    <p style="width: 50%">Summary: {{ game.summary }}</p>
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <br>
+    <input type="submit" value="Update Game" class="btn btn-primary" />
+    {{ form_end(edit_form) }}
+
+    <br>
+    {{ form_start(delete_form) }}
+    {{ form_widget(delete_form) }}
+    <input type="submit" value="Delete Game" class="btn btn-danger" />
+    {{ form_end(delete_form) }}
+
+    <br>
     <a href="{{ path("teams", {"teamId": game.team.id} ) }}" class="btn btn-default">Back to team {{ game.team.name }}</a>
 {% endblock %}

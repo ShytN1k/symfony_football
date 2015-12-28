@@ -5,6 +5,9 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class CoachType extends AbstractType
 {
@@ -15,12 +18,12 @@ class CoachType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text', array('attr' => array('class' => 'form-control')))
-            ->add('lastname', 'text', array('attr' => array('class' => 'form-control')))
-            ->add('expirience', 'integer', array('attr' => array('class' => 'form-control')))
-            ->add('age', 'integer', array('attr' => array('class' => 'form-control')))
-            ->add('nationality', 'text', array('attr' => array('class' => 'form-control')))
-            ->add('summary', 'textarea', array('attr' => array('class' => 'form-control')))
+            ->add('name', TextType::class, array('attr' => array('class' => 'form-control')))
+            ->add('lastname', TextType::class, array('attr' => array('class' => 'form-control')))
+            ->add('expirience', IntegerType::class, array('attr' => array('class' => 'form-control')))
+            ->add('age', IntegerType::class, array('attr' => array('class' => 'form-control')))
+            ->add('nationality', TextType::class, array('attr' => array('class' => 'form-control')))
+            ->add('summary', TextareaType::class, array('attr' => array('class' => 'form-control')))
         ;
     }
 
