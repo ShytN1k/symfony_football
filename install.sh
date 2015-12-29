@@ -4,8 +4,9 @@ clear
 echo "Choose action :"
 echo "1 - INSTALL"
 echo "2 - UPDATE"
-echo "3 - FIXTURES"
-echo "4 - EXIT"
+echo "3 - UPDATE DATABASE"
+echo "4 - FIXTURES"
+echo "5 - EXIT"
 
 read Key
 
