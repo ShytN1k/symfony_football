@@ -6,22 +6,22 @@ AppBundle\Entity\Coach:
     age: <numberBetween(40, 60)>
     nationality: <country()>
     summary: <paragraph(5)>
-    team: @team*
+    team: '@team*'
 
 AppBundle\Entity\Country:
   country{1..24}:
     name: <country()>
     summary: <paragraph(5)>
-    team (unique): @team*
+    team (unique): '@team*'
 
 AppBundle\Entity\Game:
   game{1..120}:
     stadium: <country()>
     team1: <country()>
-    team2: <country()>
+    team2: <numberBetween(1, 24)>
     date: <dateTimeThisYear()>
     summary: <paragraph(5)>
-    team: @team*
+    team: '@team*'
 
 AppBundle\Entity\Player:
   player{1..480}:
@@ -31,15 +31,14 @@ AppBundle\Entity\Player:
     birthday: <dateTimeBetween('-35 years', '-20 years')>
     nationality: <country()>
     summary: <paragraph(5)>
-    team: @team*
+    team: '@team*'
 
 AppBundle\Entity\Team:
   team{1..24}:
     name: <country()>
-    url: <country()>
     squadNumber: <numberBetween(20, 25)>
     staffNumber: <numberBetween(5, 10)>
-    country (unique): @country*
-    players: 20x @player*
-    coaches: 5x @coach*
-    games: 5x @game*
+    country (unique): '@country*'
+    players: '20x @player*'
+    coaches: '5x @coach*'
+    games: '5x @game*'

@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-
 {% block navlinks %}
     <li><a href="{{ path('homepage') }}">Homepage</a></li>
     <li><a href="{{ path("teams", {"teamId": country.team.id} ) }}">{{ country.name }}</a></li>
@@ -9,7 +8,18 @@
 
 {% block body %}
 
-    <p>Country: {{ country.name }}.</p>
-    <p style="width: 50%">Summary: {{ country.summary }}</p>
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <br>
+    <input type="submit" value="Update Country" class="btn btn-primary" />
+    {{ form_end(edit_form) }}
+
+    <br>
+    {{ form_start(delete_form) }}
+    {{ form_widget(delete_form) }}
+    <input type="submit" value="Delete Country" class="btn btn-danger" />
+    {{ form_end(delete_form) }}
+
+    <br>
     <a href="{{ path("teams", {"teamId": country.team.id} ) }}" class="btn btn-default">Back to team {{ country.team.name }}</a>
 {% endblock %}

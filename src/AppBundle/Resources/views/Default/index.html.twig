@@ -3,9 +3,14 @@
 {% block body %}
 <ul>
     {% for team in teams %}
-        <li>
-            <a href="{{ path('teams', {"teamname": team.url} )}}">{{ team.name }} National Football Team</a>
+        <li style="height: 50px">
+            <a href="{{ path('teams', {"teamId": team.id} )}}">{{ team.name }} National Football Team</a>
+            <a href="{{ path('edit-team', {"teamId": team.id} )}}" class="btn btn-primary" style="float: right" >Edit</a>
+            <hr>
         </li>
     {% endfor %}
+
+    <br>
+    <a href="{{ path('create-team') }}" class="btn btn-success">Add new team</a>
 </ul>
 {% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block navlinks %}
+    <li><a href="{{ path('homepage') }}">Homepage</a></li>
+    <li class="active"><a href="{{ path("teams", {"teamId": player.team.id} ) }}">{{ player.team.name }}</a></li>
+{% endblock navlinks %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <br>
+    <input type="submit" value="Create" class="btn btn-success" />
+    {{ form_end(form) }}
+
+    <a href="{{ path("teams", {"teamId": player.team.id} ) }}" class="btn btn-default">Back to team {{ player.team.name }}</a>
+{% endblock %}

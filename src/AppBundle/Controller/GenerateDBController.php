@@ -21,22 +21,22 @@ class GenerateDBController extends Controller
      */
     public function indexAction()
     {
-        $teamUrls = array(
+        $teamNames = array(
             "Albania",
             "Austria",
             "Belgium",
             "Croatia",
-            "Czech_Republic",
+            "Czech Republic",
             "England",
             "France",
             "Germany",
             "Hungary",
             "Iceland",
             "Italy",
-            "Northern_Ireland",
+            "Northern Ireland",
             "Poland",
             "Portugal",
-            "Republic_Of_Ireland",
+            "Republic Of Ireland",
             "Romania",
             "Russia",
             "Slovakia",
@@ -47,10 +47,7 @@ class GenerateDBController extends Controller
             "Ukraine",
             "Wales"
         );
-        $teamNames = $counties = $players = $coaches = $games = array();
-        foreach ($teamUrls as $teamUrl) {
-            array_push($teamNames, preg_replace('/_/', ' ', $teamUrl));
-        }
+        $counties = $players = $coaches = $games = array();
 
         $faker = Faker\Factory::create();
         $teams = array();
@@ -58,7 +55,6 @@ class GenerateDBController extends Controller
         for ($i = 0; $i < count($teamNames); $i++) {
             $team = new Team();
             $team->setName($teamNames[$i]);
-            $team->setUrl($teamUrls[$i]);
             $team->setSquadNumber($faker->numberBetween(20, 25));
             $team->setStaffNumber($faker->numberBetween(5, 10));
 
@@ -109,7 +105,7 @@ class GenerateDBController extends Controller
                 $game = new Game();
                 $game->setStadium($faker->country);
                 $game->setTeam1($team->getName());
-                $game->setTeam2('Team '. $faker->numberBetween(1, 24));
+                $game->setTeam2($faker->numberBetween(1, 24));
                 $game->setDate($faker->dateTimeThisYear);
                 $game->setSummary($faker->paragraph(5));
                 $game->setTeam($team);
